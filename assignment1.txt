@@ -1,0 +1,46 @@
+1. db.students.find({ department: "IT" }, { name: 1, CGPA: 1, _id: 0 })
+
+2. db.students.find({ CGPA: { $gte: 8.5 } }, { name: 1, rollNumber: 1, department: 1, _id: 0 })
+
+3. db.students.find({ department: { $in: ["ECE", "ME"] } })
+
+4. db.students.find({ year: 4, CGPA: { $gt: 8.0 } }, { name: 1, CGPA: 1, _id: 0 })
+
+5. db.students.find({ $and: [ { department: { $ne: "CSE" } }, { CGPA: { $lte: 7.5 } } ] })
+
+6. db.students.find().sort({ CGPA: -1 }).limit(3)
+
+7. db.students.find().sort({ CGPA: -1 }).skip(3).limit(3)
+
+8. db.students.updateMany(
+  { department: "CSE" },
+  { $inc: { CGPA: 0.2 } }
+)
+
+9. db.students.updateMany(
+  { CGPA: { $lt: 7.0 } },
+  { $set: { department: "Probation" } }
+)
+
+10. db.students.updateMany(
+  { department: "ME" },
+  { $unset: { email: "" } }
+)
+
+11. db.students.updateMany(
+  {},
+  { $rename: { "cgpa": "gpa" } }
+)
+
+12. db.students.replaceOne(
+  { rollNumber: "CSE2104" },
+  {
+    rollNumber: "CSE2104",
+    name: "Amit Verma",
+    department: "CSE",
+    year: 4,
+    gpa: 8.9
+  }
+)
+
+
